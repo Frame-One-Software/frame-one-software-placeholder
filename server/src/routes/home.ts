@@ -2,6 +2,7 @@ import {getApp} from "@/services/express";
 import axios from "axios";
 import si from "systeminformation";
 import formatBytes from "@/utils/formatBytes";
+import {currentRouteLogs} from "@/middleware/routeLogger";
 
 getApp().get("/", async (req, res) => {
 
@@ -37,6 +38,10 @@ getApp().get("/", async (req, res) => {
 		cores,
 		processors,
 	} = await si.cpu();
+	const {
+		currentLoad,
+		avgLoad,
+	} = await si.currentLoad();
 	const OsInformation = [
 		["Server Hostname", hostname],
 		["Server OS (Distro / Platform / Release)", `${distro} / ${platform} / ${release}`],
@@ -44,6 +49,7 @@ getApp().get("/", async (req, res) => {
 		["CPU", `${manufacturer} ${brand}`],
 		["CPU Speed", `${speed}GHz`],
 		["CPU Cores (Processors)", `${cores} (${processors})`],
+		["CPU Load (Current / Average)", `${currentLoad.toFixed(2)}% / ${avgLoad.toFixed(2)}%`]
 	]
 
 	// grab docker info
@@ -66,6 +72,7 @@ getApp().get("/", async (req, res) => {
 
 	res.render("../pages/home", {
 		table,
-		dockerContainerData
+		dockerContainerData,
+		currentRouteLogs
 	});
 })

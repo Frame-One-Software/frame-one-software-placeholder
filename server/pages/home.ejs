@@ -10,7 +10,6 @@
             crossorigin="anonymous">
     </script>
     <link href="/static/style.css" rel="stylesheet">
-    <link href="/static/ripple.css" rel="stylesheet">
 </head>
 <body>
 
@@ -85,7 +84,24 @@
                 </tbody>
             </table>
         <% } %>
+
+        <% if(currentRouteLogs.length > 0){ %>
+            <h4 class="mt-5">Logs</h4>
+            <i>If this server is running on a stateless infrastructure (e.g. Cloud Run), these logs will not be persistent</i>
+            <ul class="list-group list-group-flush mt-5">
+                <% for (let j = currentRouteLogs.length - 1; j >= 0; j--) { %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold"><%= `${currentRouteLogs[j].date.toLocaleTimeString("en-US")}:` %></span>
+                        <span class="text-left"><%= `${currentRouteLogs[j].statusCode} ${currentRouteLogs[j].path} ${currentRouteLogs[j].method} ` %>
+                            <%= `${currentRouteLogs[j].ip ? ` (${currentRouteLogs[j].ip})` : ""}` %></span>
+                        <span class="badge badge-primary primary badge-pill"><%= `${currentRouteLogs[j].elapsedTimeMs.toFixed(0)}ms` %></span>
+                    </li>
+                <% } %>
+            </ul>
+        <% } %>
     </div>
+
+    <p class="mt-5">Generated: <%= new Date().toISOString() %></p>
 
 </div>
 </body>
