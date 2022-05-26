@@ -4,11 +4,10 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": false,
-    "em"
     "skipLibCheck": true,
     "paths": {
       "@/*": ["src/*"],
