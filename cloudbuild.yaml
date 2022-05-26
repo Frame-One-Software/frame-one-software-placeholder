@@ -18,12 +18,18 @@ steps:
 
   # save
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'image', 'push', '--all-tags', '$_GCR_IMAGE_PATH' ]
-    id: 'save-server'
+    args: [ 'push', '$_GCR_IMAGE_PATH:$TAG_NAME' ]
+    id: 'save-server-tag'
+    waitFor:
+      - 'build-server'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', '$_GCR_IMAGE_PATH' ]
+    id: 'save-server-latest'
     waitFor:
       - 'build-server'
 
 images:
   - $_GCR_IMAGE_PATH:$TAG_NAME
+  - $_GCR_IMAGE_PATH
 
 timeout: 1200s
