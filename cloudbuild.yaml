@@ -28,6 +28,13 @@ steps:
     waitFor:
       - 'build-server'
 
+  # deploy
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [ 'beta', 'run', 'deploy', '$_CLOUD_RUN_NAME', '--image', '$_GCR_IMAGE_PATH:$TAG_NAME', '--region', '$_CLOUD_RUN_REGION']
+    waitFor:
+      - 'save-server-tag'
+
+
 images:
   - $_GCR_IMAGE_PATH:$TAG_NAME
   - $_GCR_IMAGE_PATH

@@ -17,6 +17,8 @@ resource "google_cloudbuild_trigger" "trigger" {
   }
   substitutions = {
 	_GCR_IMAGE_PATH = local.gcr_image_path
+	_CLOUD_RUN_NAME = google_cloud_run_service.example-cloud-run.name
+	_CLOUD_RUN_REGION = "us-central1"
   }
 }
 

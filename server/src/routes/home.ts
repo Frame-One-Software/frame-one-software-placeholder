@@ -39,16 +39,12 @@ getApp().get("/", async (req, res) => {
 		processors,
 	} = await si.cpu();
 	const OsInformation = [
-		["Server OS Platform", platform],
-		["Server OS Distro", distro],
-		["Server OS Release", release],
-		["Server OS Build", build],
 		["Server Hostname", hostname],
-		["Memory", `${formatBytes(active)} / ${formatBytes(total)}`],
+		["Server OS", `${distro} ${platform} ${release} (${build})`],
+		["Memory (Used / Total)", `${formatBytes(active)} / ${formatBytes(total)}`],
 		["CPU", `${manufacturer} ${brand}`],
 		["CPU Speed", `${speed}GHz`],
-		["CPU Cores", cores],
-		["CPU Processors", processors],
+		["CPU Cores (Processors)", `${cores} (${processors})`],
 	]
 
 	// grab docker info
@@ -60,7 +56,7 @@ getApp().get("/", async (req, res) => {
 	// assemble the table
 	const tableValues = [
 		["Egress IP", egressIp],
-		["PORT", process.env.PORT ?? 80],
+		["Port", process.env.PORT ?? 80],
 		...OsInformation,
 		...cloudRunVariables,
 		...reactAppVariables,
