@@ -32,6 +32,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: ['run', 'deploy', '$_CLOUD_RUN_NAME', '--image', '$_GCR_IMAGE_PATH:$TAG_NAME', '--region', '$_CLOUD_RUN_REGION' '--update-env-vars', 'REACT_APP_FRAME_ONE_PLACEHOLDER_VERSION=$TAG_NAME']
+    id: 'deploy-server'
     waitFor:
       - 'save-server-tag'
 
@@ -40,4 +41,4 @@ images:
   - $_GCR_IMAGE_PATH:$TAG_NAME
   - $_GCR_IMAGE_PATH
 
-timeout: 120s
+timeout: 190s
