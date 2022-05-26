@@ -1,9 +1,19 @@
 steps:
+  # pull cache
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: [ '-c', 'docker pull $_GCR_IMAGE_PATH:$TAG_NAME:latest || exit 0' ]
+    id: 'pull-server'
+    waitFor: [ '-' ]
+
   # build
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', '$_GCR_IMAGE_PATH:$TAG_NAME',
+            '--cache-from', '$_GCR_IMAGE_PATH:$TAG_NAME:latest',
             '--file', './server/Dockerfile', '.' ]
     id: 'build-server'
+    waitFor:
+      - 'pull-server'
 
   # save
   - name: 'gcr.io/cloud-builders/docker'
