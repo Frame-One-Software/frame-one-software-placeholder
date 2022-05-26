@@ -6,6 +6,6 @@ WORKDIR /usr/src/server
 COPY ./server ./
 RUN npm install && \
     npm run build && \
-    npm uninstall typescript --no-save
+    npm uninstall typescript
 
 CMD ["npm", "run", "start"]
