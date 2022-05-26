@@ -6,6 +6,6 @@ WORKDIR /usr/src/server
 COPY ./server/package*.json ./
 RUN npm install
 COPY ./server ./
-RUN npm run build
+RUN npx tsc
 
 CMD ["npm", "run", "start"]
