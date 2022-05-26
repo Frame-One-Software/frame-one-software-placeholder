@@ -4,6 +4,7 @@ import si from "systeminformation";
 import formatBytes from "@/utils/formatBytes";
 import {currentRouteLogs} from "@/middleware/routeLogger";
 import getIPAddress from "@/utils/getIPAddress";
+import isDocker from 'is-docker';
 
 getApp().get("/", async (req, res) => {
 
@@ -72,6 +73,7 @@ getApp().get("/", async (req, res) => {
 		["Caller IP", getIPAddress(req)],
 		["Port", process.env.PORT ?? 80],
 		["Timezone", `${timezoneName} (${timezone})`],
+		["Running inside Docker", isDocker().toString()],
 		...OsInformation,
 		...cloudRunVariables,
 		...reactAppVariables,
