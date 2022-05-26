@@ -6,6 +6,7 @@ RUN npm install
 COPY ./server ./
 RUN npm run build
 RUN npm prune --production
+RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
 
 FROM node:16.15.0-alpine
 
@@ -15,6 +16,5 @@ COPY --from=BUILD_IMAGE /usr/src/server/node_modules ./node_modules
 COPY --from=BUILD_IMAGE /usr/src/server/dist ./dist
 COPY ./server/pages ./pages
 COPY ./server/static ./static
-
 
 CMD ["node", "dist/index.js"]
