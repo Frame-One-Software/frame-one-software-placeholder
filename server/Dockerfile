@@ -6,7 +6,7 @@ RUN npm install
 COPY ./server ./
 RUN npm run build
 
-FROM node:16.15.0-alpine
+FROM node:16.15.0-slim
 
 ENV NODE_ENV=production
 
