@@ -1,5 +1,9 @@
 data "google_project" "project" {}
 
+locals {
+  gcr_image_path = "gcr.io/${data.google_project.project.name}"
+}
+
 resource "google_cloudbuild_trigger" "trigger" {
   name        = "build-and-deploy"
   description = "Will pull and push a new version to the Google Cloud Repository and make it public."
@@ -12,7 +16,7 @@ resource "google_cloudbuild_trigger" "trigger" {
 	}
   }
   substitutions = {
-	_GCR_BUCKET_NAME = google_container_registry.registry.id
+	_GCR_IMAGE_PATH = local.gcr_image_path
   }
 }
 

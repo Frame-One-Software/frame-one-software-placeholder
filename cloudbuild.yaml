@@ -1,18 +1,18 @@
 steps:
   # build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', '_GCR_BUCKET_NAME:$TAG_NAME',
+    args: [ 'build', '-t', '$_GCR_IMAGE_PATH:$TAG_NAME',
             '--file', './server/Dockerfile', '.' ]
     id: 'build-server'
 
   # save
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', '_GCR_BUCKET_NAME:$TAG_NAME' ]
+    args: [ 'push', '$_GCR_IMAGE_PATH:$TAG_NAME' ]
     id: 'save-server'
     waitFor:
       - 'build-server'
 
 images:
-  - _GCR_BUCKET_NAME:$_STAGE
+  - $_GCR_IMAGE_PATH:$TAG_NAME
 
 timeout: 1200s
