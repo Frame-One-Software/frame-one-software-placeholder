@@ -18,15 +18,15 @@ steps:
 
   # save
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', '$_GCR_IMAGE_PATH', '$_GCR_IMAGE_PATH:$TAG_NAME' ]
+    args: [ 'push', '-a', '$_GCR_IMAGE_PATH:$TAG_NAME' ]
     id: 'save-server-tag'
     waitFor:
       - 'build-server'
-#  - name: 'gcr.io/cloud-builders/docker'
-#    args: [ 'push', '$_GCR_IMAGE_PATH' ]
-#    id: 'save-server-latest'
-#    waitFor:
-#      - 'build-server'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', '$_GCR_IMAGE_PATH' ]
+    id: 'save-server-latest'
+    waitFor:
+      - 'build-server'
 
 images:
   - $_GCR_IMAGE_PATH:$TAG_NAME
