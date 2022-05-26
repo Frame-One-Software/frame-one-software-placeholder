@@ -1,7 +1,7 @@
 data "google_project" "project" {}
 
 locals {
-  gcr_image_path = "gcr.io/${data.google_project.project.name}"
+  gcr_image_path = "gcr.io/${data.google_project.project.id}"
 }
 
 resource "google_cloudbuild_trigger" "trigger" {
