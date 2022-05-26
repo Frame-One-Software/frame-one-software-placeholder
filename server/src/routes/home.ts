@@ -3,6 +3,7 @@ import axios from "axios";
 import si from "systeminformation";
 import formatBytes from "@/utils/formatBytes";
 import {currentRouteLogs} from "@/middleware/routeLogger";
+import getIPAddress from "@/utils/getIPAddress";
 
 getApp().get("/", async (req, res) => {
 
@@ -56,12 +57,21 @@ getApp().get("/", async (req, res) => {
 	let dockerContainerData = [];
 	try {
 		dockerContainerData = await si.dockerContainers();
-	} catch (err) {}
+	} catch (err) {
+	}
+
+	// grab timezone information
+	const {
+		timezone,
+		timezoneName
+	} = await si.time();
 
 	// assemble the table
 	const tableValues = [
 		["Egress IP", egressIp],
+		["Caller IP", getIPAddress(req)],
 		["Port", process.env.PORT ?? 80],
+		["Timezone", `${timezoneName} (${timezone})`],
 		...OsInformation,
 		...cloudRunVariables,
 		...reactAppVariables,
