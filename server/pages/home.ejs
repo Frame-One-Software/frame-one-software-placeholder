@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frame One Software Placeholder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous">
+    </script>
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="/static/ripple.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="px-4 py-5 my-5 text-center container">
+    <img class="d-block mx-auto mb-5 logo" src="/static/frame-one-software-boilerplate.svg"
+         alt="Frame One Software Boilerplate">
+    <h1 class="display-5 fw-bold">The Container is Hosted!</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            The following is a placeholder page that is emitted by a placeholder Docker container. This
+            Docker container exposes a handful of tools for setting up and debugging the Frame One Software Boilerplate
+            during Dev Ops of projects from Frame One Software Inc.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a class="btn btn-primary btn-lg px-4 gap-3" href="https://frameonesoftware.com">Visit Frame One Software</a>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Contact Support</button>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Variables</th>
+                <th scope="col">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% for (var i = 0; i < table.length ; i++) { %>
+                <tr>
+                    <td><%= table[i][0]; %></td>
+                    <td><code> <%= table[i][1]; %></code></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

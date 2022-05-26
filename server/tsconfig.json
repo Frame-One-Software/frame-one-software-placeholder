@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "routes/*": ["routes/*"],
+      "middleware/*": ["middleware/*"],
+      "services/*": ["services/*"],
+      "utils/*": ["utils/*"]
+    },
+    "lib": ["es5", "es2018", "esnext"],
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*.ts",
+  ],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "frame-one-software-placeholder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@types/express": "4.17.13",
+    "@types/source-map-support": "0.5.2",
+    "axios": "0.27.2",
+    "ejs": "3.1.8",
+    "express": "4.18.1",
+    "module-alias": "2.2.2",
+    "source-map-support": "0.5.19"
+  },
+  "devDependencies": {
+    "typescript": "4.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frame-One-Software/frame-one-software-placeholder.git"
+  },
+  "author": "Frame One Software Inc. <christopher@frameonesoftware.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Frame-One-Software/frame-one-software-placeholder/issues"
+  },
+  "homepage": "https://github.com/Frame-One-Software/frame-one-software-placeholder#readme",
+  "_moduleAliases": {
+    "@": "dist",
+    "routes": "dist/routes",
+    "middleware": "dist/middleware",
+    "services": "dist/services",
+    "utils": "dist/utils"
+  }
+}

@@ -1,1 +1,2 @@
-# frame-one-software-placeholder
+![https://frameonesoftware.com](./server/static/frame-one-software-boilerplate.svg)
+
