@@ -2,6 +2,16 @@ locals {
   service_account_name = "${data.google_project.project.number}-compute@developer.gserviceaccount.com"
 }
 
+# grab the newest tag
+data "external" "newest_tag" {
+  program     = [
+	"zx",
+	"getNewestTag.mjs",
+	"-p",
+	local.gcr_image_path
+  ]
+  working_dir = "${path.root}/scripts"
+}
 
 resource "google_cloud_run_service" "example-cloud-run" {
   name                       = "frame-one-software-placeholder"
@@ -13,7 +23,7 @@ resource "google_cloud_run_service" "example-cloud-run" {
 	  service_account_name = local.service_account_name
 	  timeout_seconds      = 30
 	  containers {
-		image = local.gcr_image_path
+		image = "${local.gcr_image_path}:${data.external.newest_tag.result.latestTag}"
 		resources {
 		  limits = {
 			memory = "512Mi"
@@ -22,18 +32,8 @@ resource "google_cloud_run_service" "example-cloud-run" {
 		}
 
 		env {
-		  name  = "REACT_APP_TEST_VARIABLE_0"
-		  value = "zero"
-		}
-
-		env {
-		  name  = "REACT_APP_TEST_VARIABLE_1"
-		  value = "one"
-		}
-
-		env {
-		  name  = "REACT_APP_TEST_VARIABLE_2"
-		  value = "two"
+		  name  = "REACT_APP_FRAME_ONE_PLACEHOLDER_VERSION"
+		  value = data.external.newest_tag.result.latestTag
 		}
 	  }
 	}
