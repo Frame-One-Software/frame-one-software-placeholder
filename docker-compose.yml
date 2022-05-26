@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  server-local:
+  local:
     build:
       context: ./
       dockerfile: ./server/Dockerfile
@@ -11,7 +11,7 @@ services:
     environment:
       PORT: 8080
 
-  server-live:
+  remote:
     image: gcr.io/frame-one-software-placeholder/image:latest
     ports:
       - "8081:8081"
