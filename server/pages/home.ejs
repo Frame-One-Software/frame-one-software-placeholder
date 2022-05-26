@@ -15,7 +15,7 @@
     </script>
     <link href="static/style.css" rel="stylesheet">
 
-    <link rel="icon" href="static/icons/favicon.ico" />
+    <link rel="icon" href="static/icons/favicon.ico"/>
     <link rel="apple-touch-icon" sizes="180x180" href="static/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="static/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/icons/favicon-16x16.png">
@@ -102,13 +102,19 @@
 
         <% if(currentRouteLogs.length > 0){ %>
             <h4 class="mt-5">Logs</h4>
-            <i>If this server is running on a stateless infrastructure (e.g. Cloud Run), these logs will not be persistent</i>
+            <i>If this server is running on a stateless infrastructure (e.g. Cloud Run), these logs will not be
+                persistent</i>
             <ul class="list-group list-group-flush mt-5">
                 <% for (let j = currentRouteLogs.length - 1; j >= 0; j--) { %>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span class="fw-bold"><%= `${currentRouteLogs[j].date.toLocaleTimeString("en-US")}:` %></span>
-                        <span class="text-left"><%= `${currentRouteLogs[j].statusCode} ${currentRouteLogs[j].path} ${currentRouteLogs[j].method} ` %>
-                            <%= `${currentRouteLogs[j].ip ? ` (${currentRouteLogs[j].ip})` : ""}` %></span>
+                        <span class="text-left">
+                            <%= `${currentRouteLogs[j].statusCode} ${currentRouteLogs[j].method}` %>
+                            <code>
+                                <%= `${currentRouteLogs[j].path}` %>
+                            </code>
+                            <%= `${currentRouteLogs[j].ip ? ` (${currentRouteLogs[j].ip})` : ""}` %>
+                        </span>
                         <span class="badge badge-primary primary badge-pill"><%= `${currentRouteLogs[j].elapsedTimeMs.toFixed(0)}ms` %></span>
                     </li>
                 <% } %>

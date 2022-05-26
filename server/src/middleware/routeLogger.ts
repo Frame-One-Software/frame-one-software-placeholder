@@ -11,7 +11,7 @@ getApp().use((req, res, next) => {
 		const duration = process.hrtime(start);
 		const ms = duration[0] * 1000 + duration[1] / 1e6;
 		const ip = getIPAddress(req);
-		console.log(res.statusCode, req.path, req.method, ':', ms.toFixed(0) + 'ms', `(${ip})`);
+		console.log(res.statusCode, req.method, req.path, ':', ms.toFixed(0) + 'ms', `(${ip})`);
 		currentRouteLogs.push({
 			date: new Date(),
 			statusCode: res.statusCode,
