@@ -18,7 +18,7 @@ steps:
 
   # save
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', '$_GCR_IMAGE_PATH:$TAG_NAME' ]
+    args: [ 'push', '--all-tags', '$_GCR_IMAGE_PATH' ]
     id: 'save-server'
     waitFor:
       - 'build-server'
