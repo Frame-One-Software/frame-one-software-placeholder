@@ -5,6 +5,8 @@ resource "local_file" "output" {
 # Frame One Software Placeholder
 There are numerous times during the dev ops deployments, that a placeholder container is needed. In the past, Frame One Software has used `us-docker.pkg.dev/cloudrun/container/hello`, but it is lacking a personal branding and openness to add features. The Frame One Software Placeholder is a public docker container that can be used in all of the same cases, but is catered to the tech stack of the Frame One Software Boilerplate.
 
+## `${local.gcr_image_path}:latest`
+
 ## Example Deployment
 The following is a link to an active deployment of the docker container running on cloud run.
 
