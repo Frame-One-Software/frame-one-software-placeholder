@@ -10,7 +10,7 @@ COPY ./server ./
 RUN npm run build
 
 # Remove the dev dependencies
- RUN npm prune --production
+RUN npm prune --production
 
 # Run Docker Prune
 RUN /usr/local/bin/node-prune
