@@ -32,4 +32,4 @@ images:
   - $_GCR_IMAGE_PATH:$TAG_NAME
   - $_GCR_IMAGE_PATH
 
-timeout: 60s
+timeout: 120s

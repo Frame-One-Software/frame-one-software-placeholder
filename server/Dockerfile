@@ -1,4 +1,4 @@
-FROM node:16.15.0-alpine AS BUILD_IMAGE
+FROM node:16.15.0 AS BUILD_IMAGE
 
 WORKDIR /usr/src/server
 COPY ./server/package*.json ./
