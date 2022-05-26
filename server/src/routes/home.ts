@@ -24,7 +24,6 @@ getApp().get("/", async (req, res) => {
 		platform,
 		distro,
 		release,
-		build,
 		hostname
 	} = await si.osInfo();
 	const {
@@ -40,7 +39,7 @@ getApp().get("/", async (req, res) => {
 	} = await si.cpu();
 	const OsInformation = [
 		["Server Hostname", hostname],
-		["Server OS", `${distro} ${platform} ${release} (${build})`],
+		["Server OS", `${distro} ${platform} ${release}`],
 		["Memory (Used / Total)", `${formatBytes(active)} / ${formatBytes(total)}`],
 		["CPU", `${manufacturer} ${brand}`],
 		["CPU Speed", `${speed}GHz`],
