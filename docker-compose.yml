@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: ./server/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      PORT: 80

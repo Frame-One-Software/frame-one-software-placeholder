@@ -1,6 +1,4 @@
-resource "google_container_registry" "registry" {
-  location = "US"
-}
+resource "google_container_registry" "registry" {}
 
 data "google_iam_policy" "viewer" {
   binding {
