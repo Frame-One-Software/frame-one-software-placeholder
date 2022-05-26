@@ -1,12 +1,20 @@
 FROM node:16.15.0 AS BUILD_IMAGE
 
+# Install Docker Prune
+RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
+
 WORKDIR /usr/src/server
 COPY ./server/package*.json ./
 RUN npm install
 COPY ./server ./
 RUN npm run build
+
+# Remove the dev dependencies
 RUN npm prune --production
-RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
+
+# Run Docker Prune
+RUN /usr/local/bin/node-prune
+
 
 FROM node:16.15.0-alpine
 
