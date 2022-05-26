@@ -1,7 +1,7 @@
 data "google_project" "project" {}
 
 resource "google_cloudbuild_trigger" "trigger" {
-  name        = "Build and deploy to GCR"
+  name        = "build-and-deploy"
   description = "Will pull and push a new version to the Google Cloud Repository and make it public."
   filename    = "cloudbuild.yaml"
   github {
