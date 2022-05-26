@@ -1,11 +1,19 @@
+FROM node:16.15.0-alpine AS BUILD_IMAGE
+
+WORKDIR /usr/src/server
+COPY ./server/package*.json ./
+RUN npm install
+COPY ./server ./
+RUN npm run build
+
 FROM node:16.15.0-alpine
 
 ENV NODE_ENV=production
 
-WORKDIR /usr/src/server
-COPY ./server ./
-RUN npm install && \
-    npm run build && \
-    npm uninstall typescript
+COPY ./server/package*.json ./
+RUN npm install
+COPY ./server/pages ./pages
+COPY ./server/static ./static
+COPY --from=BUILD_IMAGE /usr/src/server/dist ./dist
 
-CMD ["npm", "run", "start"]
+CMD ["node", "dist/index.js"]
