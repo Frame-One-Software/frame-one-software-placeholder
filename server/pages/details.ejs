@@ -29,6 +29,9 @@
 <body>
 
 <div class="px-4 py-5 my-5 text-center container">
+
+    <ul id="eventlist"></ul>
+
     <img class="d-block mx-auto mb-5 logo" src="static/frame-one-software-boilerplate.svg"
          alt="Frame One Software Boilerplate">
     <h1 class="display-5 fw-bold">The Container is Hosted!</h1>
@@ -49,6 +52,7 @@
     </div>
 
     <div class="container">
+
         <table class="table table-striped table-hover mb-5">
             <thead>
             <tr>
@@ -64,6 +68,30 @@
                     <td><code> <%= table[i][1]; %></code></td>
                 </tr>
             <% } %>
+            <tr>
+                <td>
+                    Server Ping
+                </td>
+                <td id="ping">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="speedtest()">Query</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Server Download Speed
+                </td>
+                <td id="down">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="speedtest()">Query</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Server Upload Speed
+                </td>
+                <td id="upload">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="speedtest()">Query</button>
+                </td>
+            </tr>
             </tbody>
         </table>
 
@@ -125,5 +153,7 @@
     <p class="mt-5">Generated: <%= new Date().toISOString() %></p>
 
 </div>
+
+<script src="static/speedtest.js"></script>
 </body>
 </html>

@@ -5,3 +5,9 @@
 .badge {
     background-color: black;
 }
+
+.f1-spinner {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
