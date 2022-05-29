@@ -16,7 +16,7 @@
       "services/*": ["services/*"],
       "utils/*": ["utils/*"]
     },
-    "lib": ["es5", "es2018", "esnext"],
+    "lib": ["es5", "es2018", "esnext", "dom"],
     "outDir": "dist"
   },
   "include": [

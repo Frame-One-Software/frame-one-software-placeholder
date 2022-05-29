@@ -1,0 +1,12 @@
+**/.idea
+**/README.md
+**/npm-debug.log
+**/.github
+**/.git
+**/.gitignore
+**/.gitattributes
+**/.DS_Store
+**/node_modules
+**/*.iml
+**/dist
+terraform
