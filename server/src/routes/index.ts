@@ -1,2 +1,2 @@
-import "./home";
-import "./404";
+import "./details";
+import "./wildcard";
