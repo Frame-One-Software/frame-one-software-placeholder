@@ -19,6 +19,7 @@ RUN /usr/local/bin/node-prune
 FROM node:16.15.0-alpine
 
 ENV NODE_ENV=production
+RUN npm install -g speed-server
 
 WORKDIR /usr/src/server
 COPY ./server/package.json ./
