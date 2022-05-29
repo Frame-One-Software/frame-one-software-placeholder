@@ -10,7 +10,6 @@ services:
       - "8080:8080"
     environment:
       PORT: 8080
-      REDIRECT_TO: "https://google.ca"
 
   remote:
     image: gcr.io/frame-one-software-placeholder/image:latest
