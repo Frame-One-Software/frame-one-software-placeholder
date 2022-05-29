@@ -5,6 +5,9 @@ import express from "express";
 
 sourceMapSupport.install();
 
+// start the listeners
+require("@/services/processListeners");
+
 // set the env variables
 process.env.PORT = process.env.PORT ? process.env.PORT : "80";
 process.env.SHOW_DETAILS = process.env.SHOW_DETAILS ? process.env.SHOW_DETAILS : "true";

@@ -17,8 +17,8 @@ export function getApp(): core.Express {
 export function getServer() {
 
 	if (!server) {
-		server = getApp().listen(process.env.PORT ?? 80, () => {
-			console.log(`Rest server started on ${process.env.PORT ?? 80}.`);
+		server = getApp().listen(process.env.PORT, () => {
+			console.log(`Rest server started on ${process.env.PORT}.`);
 		});
 	}
 
@@ -36,7 +36,6 @@ export function closeServer(): Promise<void> {
 				console.error(err);
 			} else {
 				console.log("Express server successfully stopped");
-
 			}
 
 			resolve();
