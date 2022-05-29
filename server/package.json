@@ -15,6 +15,7 @@
     "is-ip": "3.1.0",
     "module-alias": "2.2.2",
     "source-map-support": "0.5.19",
+    "speed-test": "^3.0.0",
     "systeminformation": "^5.11.15"
   },
   "devDependencies": {
