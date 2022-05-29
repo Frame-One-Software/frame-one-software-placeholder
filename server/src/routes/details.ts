@@ -1,4 +1,5 @@
 import {getApp} from "@/services/express";
+import axios from "axios";
 import si from "systeminformation";
 import formatBytes from "@/utils/formatBytes";
 import {currentRouteLogs} from "@/middleware/routeLogger";
@@ -9,8 +10,7 @@ if (process.env.SHOW_DETAILS === "true") {
 	getApp().get("/details", async (req, res) => {
 
 		// get the egress ip
-		const response = await fetch("https://api64.ipify.org?format=json");
-		const {ip: egressIp} = await response.json();
+		const {data: {ip: egressIp}} = await axios.get("https://api64.ipify.org?format=json");
 
 		// grab all variables that would be sent to a react app
 		const reactAppVariables = Object.entries(process.env)
