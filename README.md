@@ -35,22 +35,13 @@ Adding the following to a docker compose will allow pulling the image for use.
 version: "3.8"
 
 services:
-  placeholder:
+  remote:
     image: gcr.io/frame-one-software-placeholder/image:latest
     ports:
       - "8080:8080"
     environment:
       PORT: 8080
 ```
-
-## Environment Variables
-
-| Environment Variable          | Description                                                                                                                |
-|-------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| **PORT**                      | The port to expose on. Defaults to `80`.                                                                                   |
-| **REDIRECT_TO**               | If this is set, the wildcard redirect will direct to the URL set. If this is not set, then it will redirect to `/details`. |
-| **REDIRECT_HTTP_STATUS_CODE** | If this is set alongside `REDIRECT_TO` will change the http status code to the number set.                                 |
-| **SHOW_DETAILS**              | If set to `"false"` will allow the `/details` page to load. Defaults to `"true"`.                                          |
 
 ### Other Versions
 The image is public and all previous tags can be viewed here...

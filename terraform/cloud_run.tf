@@ -21,7 +21,7 @@ resource "google_cloud_run_service" "example-cloud-run" {
   template {
 	spec {
 	  service_account_name = local.service_account_name
-	  timeout_seconds      = 30
+	  timeout_seconds      = 300
 	  containers {
 		image = "${local.gcr_image_path}:${data.external.newest_tag.result.latestTag}"
 		resources {
