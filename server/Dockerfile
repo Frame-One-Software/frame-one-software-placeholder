@@ -15,7 +15,6 @@ RUN npm prune --production
 # Run Docker Prune
 RUN /usr/local/bin/node-prune
 
-
 FROM node:16.15.0-alpine
 
 ENV NODE_ENV=production
