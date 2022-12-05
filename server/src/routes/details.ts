@@ -72,6 +72,7 @@ if (process.env.SHOW_DETAILS === "true") {
 
 		// assemble the table
 		const tableValues = [
+			["Placeholder Version", process.env.VERSION],
 			["Egress IP", egressIp],
 			["Caller IP", getIPAddress(req)],
 			["Port", process.env.PORT ?? 80],

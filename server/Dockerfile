@@ -28,4 +28,7 @@ COPY --from=BUILD_IMAGE /usr/src/server/dist ./dist
 COPY ./server/pages ./pages
 COPY ./server/static ./static
 
-CMD ["node", "dist/index.js"]
+ARG VERSION
+ENV VERSION=$VERSION
+
+ENTRYPOINT ["node", "dist/index.js"]

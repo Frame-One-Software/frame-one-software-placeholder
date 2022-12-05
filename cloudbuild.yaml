@@ -11,10 +11,14 @@ steps:
     args: [ 'build', '-t', '$_GCR_IMAGE_PATH:$TAG_NAME',
             '-t', '$_GCR_IMAGE_PATH',
             '--cache-from', '$_GCR_IMAGE_PATH',
+            '--build-arg', 'BUILDKIT_INLINE_CACHE=1',
+            '--build-arg', 'VERSION=$TAG_NAME',
             '--file', './server/Dockerfile', '.' ]
     id: 'build-server'
     waitFor:
       - 'pull-server'
+    env:
+      - 'DOCKER_BUILDKIT=1'
 
   # save
   - name: 'gcr.io/cloud-builders/docker'
@@ -40,5 +44,9 @@ steps:
 images:
   - $_GCR_IMAGE_PATH:$TAG_NAME
   - $_GCR_IMAGE_PATH
+
+options:
+  env:
+    - 'DOCKER_BUILDKIT=1'
 
 timeout: 300s

@@ -5,6 +5,8 @@ services:
     build:
       context: ./
       dockerfile: ./server/Dockerfile
+      args:
+        - VERSION="local development"
     restart: unless-stopped
     ports:
       - "8080:8080"
