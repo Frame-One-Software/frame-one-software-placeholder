@@ -23,7 +23,6 @@ RUN npm install -g speed-test
 WORKDIR /usr/src/server
 COPY ./server/package.json ./
 COPY ./server/tsconfig.json ./
-COPY ./server/start.sh ./
 COPY --from=BUILD_IMAGE /usr/src/server/node_modules ./node_modules
 COPY --from=BUILD_IMAGE /usr/src/server/dist ./dist
 COPY ./server/pages ./pages
@@ -32,4 +31,4 @@ COPY ./server/static ./static
 ARG VERSION
 ENV VERSION=$VERSION
 
-ENTRYPOINT ["sh", "./start.sh"]
+ENTRYPOINT ["node", "dist/index.js"]
