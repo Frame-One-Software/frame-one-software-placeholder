@@ -31,4 +31,4 @@ COPY ./server/static ./static
 ARG VERSION
 ENV VERSION=$VERSION
 
-ENTRYPOINT ["node", "dist/index.js"]
+ENTRYPOINT ["node", "dist/index.js", "&&", "echo"]
